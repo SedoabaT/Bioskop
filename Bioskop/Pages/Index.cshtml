@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-center text-white py-5" style="background: url('/images/hero-bg.jpg') no-repeat center center; background-size: cover;">
+    <div class="container">
+        <h1 class="display-4">Unlimited Movies, Endless Entertainment</h1>
+        <p class="lead">Stream the latest blockbusters and timeless classics.</p>
+        <a href="/Movies" class="btn btn-primary btn-lg">Explore Movies</a>
+    </div>
+</section>
+
+<!-- Featured Movies -->
+<section class="featured-movies py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Featured Movies</h2>
+        <div class="row">
+            @foreach (var movie in Model.FeaturedMovies)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="@movie.ImageUrl" class="card-img-top" alt="@movie.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.Title</h5>
+                            <p class="card-text">@movie.Description</p>
+                            <a href="#" class="btn btn-primary">Watch Trailer</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Genres Section -->
+<section class="genres-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Explore Genres</h2>
+        <div class="row">
+            @foreach (var genre in Model.Genres)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">@genre.Name</h5>
+                            <a href="/Genres/@genre.Id" class="btn btn-outline-dark">View Movies</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
